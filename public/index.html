@@ -17,10 +17,12 @@
 		<link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.theme.default.css"/>
 
 	</head>
-	<body>
+	<!-- <body> -->
+	<body data-spy="scroll" data-target="#navbar1" data-offset="70">
 
 		<section class="cover-5 text-center">
-			<nav class="navbar navbar-toggleable-sm navbar-custom navbar-light">
+			<!-- <nav class="navbar navbar-toggleable-sm navbar-custom navbar-light"> -->
+			<nav class="navbar navbar-toggleable-sm fixed-top navbar-light bg-faded">
 				<div class="container">
 					<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarToggler-5" aria-controls="navbarToggler-5" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -28,19 +30,30 @@
 					<a href="#headere-top" title="luxsciencelogo"><img src="images/logo2.png" alt="luxsciencelogo" title="luxsciencelogo"/></a>
 					<a class="navbar-brand" href="#">Lux Science</a>
 
-					<div class="collapse navbar-collapse justify-content-end" id="navbarToggler-5">
+					<!-- <div class="collapse navbar-collapse justify-content-end" id="navbarToggler-5"> -->
+					<div class="collapse navbar-collapse justify-content-end" id="navbar1">
+
 						<ul class="navbar-nav mt-2 mt-md-0">
 							<li class="nav-item active">
-								<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+								<a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">About</a>
+								<a class="nav-link" href="#about">About</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Our Work</a>
+								<a class="nav-link" href="#ourwork">Our Work</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="#">Contact</a>
+								<a class="nav-link" href="#kickstarter">Kickstarter</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#team">Team</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#contact">Contact</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#blog">Blog</a>
 							</li>
 							<li class="nav-item">
 								<a href="/protected" class="btn btn-outline-success btn-outline" href="#">Login</a>
@@ -49,7 +62,7 @@
 					</div>
 				</div>
 			</nav>
-			<div class="cover-container pb-5 ">
+			<div id="home" class="cover-container pb-5 ">
 				<div class="cover-inner container">
 					<p class="lead ">Science is illuminated as kids learn by doing</p>
 					<div class="divider"></div>
@@ -63,7 +76,7 @@
 			</div>
 		</section>
 
-		<section class="features-1 text-center">
+		<section id="about" class="features-1 text-center">
 			<div class="container">
 				<h2>About Lux Science</h2>
 				<div class="divider"></div>
@@ -83,7 +96,7 @@
 		<hr class="style1">
 		<br>
 
-		<section class="features-1 text-center">
+		<section id="ourwork" class="features-1 text-center">
 			<div class="container">
 				<h2>How Lux Science Works</h2>
 				<div class="divider"></div>
@@ -113,9 +126,21 @@
 			</div>
 		</section>
 
-		<br>
-		<hr class="style1">
-		<br>
+		<section id="kickstarter" class="cta-2 text-center">
+			<div class="container">
+				<h3 class="mt-2 mb-4">Sign up now to receive updates on our Kickstarter (TBD)!</h3>
+				<form class="subscribe">
+					<div class="form-group row pt-3">
+						<div class="col-sm-8 mb-3">
+							<input type="text" class="form-control-custom" id="inputName" placeholder="Your Email">
+						</div>
+						<div class="col-sm-4">
+							<button type="submit" class="btn btn-lg btn-outline-success">Sign me up</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</section>
 
 		<section class="content-1">
 			<div class="container">
@@ -255,7 +280,7 @@
 		<br>
 
 		<!-- Meet the team section -->
-		<div class="owl-carousel owl-theme">
+		<div id="team" class="owl-carousel owl-theme">
 		  <div> Your Content </div>
 		  <div> Your Content </div>
 		  <div> Your Content </div>
@@ -296,7 +321,7 @@
 		</section>
 
 
-		<section class="contact-2">
+		<section id="contact" class="contact-2">
 			<div class="container">
 				<div class="row contact-details">
 					<div class="col-sm-8 offset-sm-2 text-center">
@@ -355,15 +380,60 @@
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
+		<!--  -->
+		<!-- Lisa added -->
+		<!--  -->
+
+		<!-- Scrollspy scripts -->
+		<script>
+    // sandbox disable popups
+    if (window.self !== window.top && window.name!="view1") {;
+      window.alert = function(){/*disable alert*/};
+      window.confirm = function(){/*disable confirm*/};
+      window.prompt = function(){/*disable prompt*/};
+      window.open = function(){/*disable open*/};
+    }
+
+    // prevent href=# click jump
+    document.addEventListener("DOMContentLoaded", function() {
+      var links = document.getElementsByTagName("A");
+      for(var i=0; i < links.length; i++) {
+        if(links[i].href.indexOf('#')!=-1) {
+          links[i].addEventListener("click", function(e) {
+          console.debug("prevent href=# click");
+              if (this.hash) {
+                if (this.hash=="#") {
+                  e.preventDefault();
+                  return false;
+                }
+                else {
+                  /*
+                  var el = document.getElementById(this.hash.replace(/#/, ""));
+                  if (el) {
+                    el.scrollIntoView(true);
+                  }
+                  */
+                }
+              }
+              return false;
+          })
+        }
+      }
+    }, false);
+  </script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
 		<!-- owl jquery -->
 
 		<script src="/node_modules/jquery/dist/jquery.js"></script>
 		<script src="/node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
 		<script type="text/javascript">
-		$(document).ready(function(){
-	$('.owl-carousel').owlCarousel();
-});
-</script>
+				$(document).ready(function(){
+			$('.owl-carousel').owlCarousel();
+		});
+		</script>
 		<!-- <script type="text/javascript" src="js/owl.js"></script> -->
 
 
