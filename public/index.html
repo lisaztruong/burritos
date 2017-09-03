@@ -129,16 +129,24 @@
 		<section id="kickstarter" class="cta-2 text-center">
 			<div class="container">
 				<h3 class="mt-2 mb-4">Sign up now to receive updates on our Kickstarter (TBD)!</h3>
-				<form class="subscribe">
+
+				<form class="subscribe-form" name="subscribeform" id="subscribeformkickstarter" method="post" action="https://formspree.io/info@luxscience.com">
 					<div class="form-group row pt-3">
 						<div class="col-sm-8 mb-3">
-							<input type="text" class="form-control-custom" id="inputName" placeholder="Your Email">
+							<input type="text" name="email" class="form-control-custom" id="inputNamekickstarter" placeholder="Your Email">
+							<!-- formspree checks -->
+							<input type="text" name="_gotcha" style="display:none" />
+							<input type="hidden" name="_subject" value="NEW EMAIL" />
+							<input type="hidden" name="_cc" value="info@luxscience.com" />
+							<input type="hidden" name="_next" value="http://www.luxscience.com" />
+							<!-- end formspree checks -->
 						</div>
 						<div class="col-sm-4">
-							<button type="submit" class="btn btn-lg btn-outline-success">Sign me up</button>
+							<button id="sendMessagekickstarter" type="submit" class="btn btn-lg btn-outline-success">Subscribe</button>
 						</div>
 					</div>
 				</form>
+
 			</div>
 		</section>
 
@@ -320,7 +328,7 @@
 							<!-- end formspree checks -->
 						</div>
 						<div class="col-sm-4">
-							<button id="sendMessage" type="submit" class="btn btn-lg btn-outline-success">Sign me up</button>
+							<button id="sendMessage" type="submit" class="btn btn-lg btn-outline-success">Subscribe</button>
 						</div>
 					</div>
 				</form>
@@ -446,6 +454,25 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+
+		<!-- #sendmessagekickstarter script -->
+		<script>
+		var message = "";
+
+		$("sendMessagekickstarter").on("click", function() {
+				message = $("#subscribeformkickstarter").serialize();
+				$.ajax({
+
+						url: "//formspree.io/info@luxscience.com",
+						method: "POST",
+						data: {message: message},
+						dataType: "json"
+				});
+				alert('Thanks for subscribing to our kickstarter, we\'ll send you an update when it drops.');
+				return false;
+		});
+		</script>
+		<!-- end #sendmessage script -->
 
 		<!-- #sendmessage script -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
