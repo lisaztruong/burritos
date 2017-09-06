@@ -43,12 +43,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // Passport
 app.use(session({
   secret: process.env.SECRET,
   store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
-
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -86,6 +86,10 @@ passport.use(new LocalStrategy(function(username, password, done) {
 
 app.use('/', auth(passport));
 app.use('/', routes);
+
+app.use(express.static('/lux'));
+app.use("/lux",express.static("lux"));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
